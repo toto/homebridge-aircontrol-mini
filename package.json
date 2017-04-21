@@ -1,0 +1,39 @@
+{
+  "name": "homebridge-aircontrol-mini",
+  "version": "0.0.1",
+  "description": "A HomeBridge plugin for TFA-Dostmann AirControl Mini.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test present\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CiTroNaK/homebridge-mqtt-co2.git"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "keywords": [
+     "co2",
+     "temperature",
+     "co2monitor",
+     "co2-monitor",
+     "TFA-Dostmann",
+     "TFA-Dostmann AirControl Mini",
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": "toto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toto/homebridge-aircontrol-mini/issues"
+  },
+  "homepage": "https://github.com/toto/homebridge-aircontrol-mini#readme",
+  "dependencies": {
+    "co2-monitor": "^2.0.0"
+  }
+}

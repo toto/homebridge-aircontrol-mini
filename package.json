@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CiTroNaK/homebridge-mqtt-co2.git"
+    "url": "https://github.com/toto/homebridge-aircontrol-mini.git"
   },
   "files": [
-    "index.js",
+    "main.js",
     "README.md"
   ],
   "keywords": [
@@ -27,7 +27,7 @@
     "node": ">=0.12.0",
     "homebridge": ">=0.2.0"
   },
-  "author": "toto",
+  "author": "mrtoto",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/toto/homebridge-aircontrol-mini/issues"

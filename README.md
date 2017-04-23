@@ -4,7 +4,9 @@ A [HomeBridge Plugin](https://github.com/nfarina) making the TFA-Dostmann AirCon
 
 ## Installation
 
+
 ```
+sudo apt-get install build-essential libudev-dev
 sudo npm install -g homebridge-aircontrol-mini
 ```
 

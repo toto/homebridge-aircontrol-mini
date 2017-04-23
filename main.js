@@ -1,6 +1,7 @@
 var Service, Characteristic;
 
-const co2monitor = require('co2-monitor');
+const Co2monitor = require('co2-monitor');
+let co2Monitor = new Co2Monitor();
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
@@ -16,7 +17,7 @@ function CO2Accessory(log, config) {
   this.name = config["name"];
 
   // Set up CO2
-  this.co2monitor = co2monitor;
+  this.co2monitor = co2Monitor;
   this.co2service = new Service.CarbonDioxideSensor(this.name);
 
   this.co2Monitor.on('co2', (co2) => {

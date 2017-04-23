@@ -1,6 +1,6 @@
 # homebridge-aircontrol-mini
 
-A [HomeBridge Plugin](https://github.com/nfarina) making the TFA-Dostmann AirControl Mini CO2 measurment USB device availible in HomeKit.
+A [HomeBridge Plugin](https://github.com/nfarina) making the [TFA-Dostmann AirCO2ntrol Mini](https://www.amazon.co.uk/TFA-Dostmann-AirCO2NTROL-Mini-Monitor/dp/B00TH3OW4Q) CO2 Monitor measurment USB device availible in [HomeKit](https://developer.apple.com/homekit/).
 
 ## Installation
 

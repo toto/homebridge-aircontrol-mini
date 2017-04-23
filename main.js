@@ -45,6 +45,12 @@ function CO2Accessory(log, config) {
 		.getCharacteristic(Characteristic.CurrentTemperature)
 	.on('get', this.getCurrentTemperature.bind(this));
 	
+	// Connection
+	this.co2Monitor.on('connected', (device) => {
+	    co2Monitor.startTransfer();
+	});
+	
+	this.co2Monitor.connect();
 }
 
 CO2Accessory.prototype.getLevel = function(callback) {

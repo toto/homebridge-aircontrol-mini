@@ -1,6 +1,6 @@
 {
     "name": "homebridge-aircontrol-mini",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A HomeBridge plugin for TFA-Dostmann AirControl Mini.",
     "main": "main.js",
     "scripts": {

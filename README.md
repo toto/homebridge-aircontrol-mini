@@ -19,13 +19,15 @@ Create `/etc/udev/rules.d/23-homebridge.rules` and put in the following line, wh
 SUBSYSTEM=="usb", ATTR{idVendor}=="04d9", ATTR{idProduct}=="a052", GROUP="homebridge", MODE="0664"
 ```
 
+Afterwards reload the rules with `udevadm control --reload` and replug the USB plug of your AirControl Mini.
 
 ## Sample Config (Excerpt)
 
 Configured as part of your homebridge configuration.
 
-The only config parameter needed is `name`. In addition to this you need to connect the device to your machine running homebridge. Because USB access (using libusb) is required superuser access might be required.
+You need to configure the `name` of your accessory. Optionally you can configure the level using `co2_warning_level` on which the CO2 is detected as abnormal (default 1000ppm). This needs to be a Number.
 
+In addition to this you need to connect the device to your machine running homebridge. 
 
 ```
 {
@@ -37,6 +39,7 @@ The only config parameter needed is `name`. In addition to this you need to conn
     {
       "accessory": "aircontrol-mini",
       "name": "Living Room CO2"
+      "co2_warning_level": 1000
     }
   ],
 	…

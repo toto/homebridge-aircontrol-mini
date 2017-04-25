@@ -18,6 +18,10 @@ function CO2Accessory(log, config) {
 
   this.log = log;
   this.name = config["name"];
+  this.co2_warning_level = config["co2_warning_level"];
+  if (typeof(this.co2_warning_level) != "number") {
+      this.co2_warning_level = 1000;
+  }
 
   // Set up CO2
   let monitor = co2Monitor;
@@ -100,7 +104,7 @@ CO2Accessory.prototype.getDetected = function(callback) {
     callback(null, null);
     return;
   }
-  var result = this.co2 > 1000
+  var result = this.co2 > this.co2_warning_level
     ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL
     : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
   callback(null, result);

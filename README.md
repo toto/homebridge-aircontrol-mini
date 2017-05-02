@@ -38,7 +38,7 @@ In addition to this you need to connect the device to your machine running homeb
   "accessories": [
     {
       "accessory": "aircontrol-mini",
-      "name": "Living Room CO2"
+      "name": "Living Room CO2",
       "co2_warning_level": 1000
     }
   ],

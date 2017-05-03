@@ -29,13 +29,20 @@ function CO2Accessory(log, config) {
   this.co2service = new Service.CarbonDioxideSensor(this.name);
 
   this.co2monitor.on("co2", co2 => {
-    if (that.co2 == null || that.co2 == undefined) {
-      that.log(that.name, "Recieved first CO2 value at ", co2);
+    that.log(that.name, "CO2 (ppm):", co2);
+    if (!that.co2_peak || co2 > that.co2_peak) {
+      that.log(that.name, "CO2 Peak (ppm):", co2);        
       that.co2_peak = co2;
-    } else if (co2 > that.co2_peak) {
-      that.co2_peak = co2;
+      that.co2service.setCharacteristic(Characteristic.CarbonDioxidePeakLevel, co2);          
     }
     that.co2 = co2;
+    
+    var result = that.co2 > that.co2_warning_level
+                    ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL
+                    : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
+
+    that.co2service.setCharacteristic(Characteristic.CarbonDioxideLevel, co2);    
+    that.co2service.setCharacteristic(Characteristic.CarbonDioxideDetected, result);
   });
 
   this.informationService = new Service.AccessoryInformation();
@@ -64,10 +71,9 @@ function CO2Accessory(log, config) {
   this.temperatureService = new Service.TemperatureSensor(this.name);
 
   this.co2monitor.on("temp", temp => {
-    if (that.temperature == null || that.temperature == undefined) {
-      that.log(that.name, "Recieved first temperature value at ", temp);
-    }
+    that.log(that.name, "Temperatue (C):", temp);
     that.temperature = temp;
+    that.temperatureService.setCharacteristic(Characteristic.CurrentTemperature, new Number(temp));
   });
 
   this.temperatureService

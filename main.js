@@ -20,7 +20,7 @@ function CO2Accessory(log, config) {
   this.name = config["name"];
   this.co2_warning_level = config["co2_warning_level"];
   if (typeof(this.co2_warning_level) != "number") {
-      this.co2_warning_level = 1000;
+      this.co2_warning_level = 1200; // the manual says the RED level is at 1200ppm
   }
 
   // Set up CO2

@@ -25,7 +25,9 @@ Afterwards reload the rules with `udevadm control --reload` and replug the USB p
 
 Configured as part of your homebridge configuration.
 
-You need to configure the `name` of your accessory. Optionally you can configure the level using `co2_warning_level` on which the CO2 is detected as abnormal (default 1200ppm, same as red LED level according to the device manual). This needs to be a Number.
+- `accessory`: Needs to be `aircontrol-mini`
+- `name`: Required, String; You need to configure the `name` of your accessory. 
+- `co2_warning_level`: Optional, Number, Default 1200; Configure the level (in ppm) at which the CO2 is detected as abnormal (default 1200ppm, same as red LED level according to the device manual). 
 
 In addition to this you need to connect the device to your machine running homebridge. 
 
@@ -39,7 +41,7 @@ In addition to this you need to connect the device to your machine running homeb
     {
       "accessory": "aircontrol-mini",
       "name": "Living Room CO2",
-      "co2_warning_level": 1000
+      "co2_warning_level": 1200
     }
   ],
 	…

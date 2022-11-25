@@ -144,5 +144,5 @@ CO2Accessory.prototype.getCurrentRelativeHumidity = function(callback) {
 };
 
 CO2Accessory.prototype.getServices = function() {
-  return [this.co2service, this.temperatureService, this.informationService];
+  return [this.co2service, this.temperatureService, this.humidityService, this.informationService];
 };

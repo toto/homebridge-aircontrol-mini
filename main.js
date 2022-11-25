@@ -80,6 +80,19 @@ function CO2Accessory(log, config) {
     .getCharacteristic(Characteristic.CurrentTemperature)
     .on("get", this.getCurrentTemperature.bind(this));
 
+  // Set up Relative Humidity Service
+  this.humidityService = new Service.HumiditySensor(this.name);
+
+  this.co2monitor.on("hum", humidity => {
+    that.log(that.name, "Humidity (%):", humidity);
+    that.humidity = humidity;
+    that.humidityService.setCharacteristic(Characteristic.CurrentRelativeHumidity, Number.parseFloat(humidity));
+  });
+
+  this.humidityService
+    .getCharacteristic(Characteristic.CurrentRelativeHumidity)
+    .on("get", this.getCurrentRelativeHumidity.bind(this));
+
   // Connection
   this.co2monitor.connect(() => {
     that.log(that.name, "Connected, recieving data…");
@@ -120,6 +133,14 @@ CO2Accessory.prototype.getCurrentTemperature = function(callback) {
     return;
   }
   callback(null, new Number(this.temperature));
+};
+
+CO2Accessory.prototype.getCurrentRelativeHumidity = function(callback) {
+  if (this.humidity == null || this.humidity == undefined) {
+    callback(null, null);
+    return;
+  }
+  callback(null, new Number(this.humidity));
 };
 
 CO2Accessory.prototype.getServices = function() {

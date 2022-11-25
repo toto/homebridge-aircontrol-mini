@@ -81,12 +81,10 @@ function CO2Accessory(log, config) {
     .on("get", this.getCurrentTemperature.bind(this));
 
   // Connection
-  this.co2monitor.on("connected", device => {
-    monitor.startTransfer();
+  this.co2monitor.connect(() => {
     that.log(that.name, "Connected, recieving data…");
+    monitor.transfer();
   });
-
-  this.co2monitor.connect();
 }
 
 CO2Accessory.prototype.getLevel = function(callback) {

@@ -26,7 +26,7 @@ function CO2Accessory(log, config) {
   // Set up CO2
   let monitor = co2Monitor;
   this.co2monitor = monitor;
-  this.co2service = new Service.CarbonDioxideSensor(this.name);
+  this.co2service = new Service.CarbonDioxideSensor("CO2 Sensor");
 
   this.co2monitor.on("co2", co2 => {
     that.log(that.name, "CO2 (ppm):", co2);
@@ -68,7 +68,7 @@ function CO2Accessory(log, config) {
     .on("get", this.getPeakLevel.bind(this));
 
   // Set up Temperature Service
-  this.temperatureService = new Service.TemperatureSensor(this.name);
+  this.temperatureService = new Service.TemperatureSensor("Temperature Sensor");
 
   this.co2monitor.on("temp", temp => {
     that.log(that.name, "Temperature (C):", temp);
@@ -81,7 +81,7 @@ function CO2Accessory(log, config) {
     .on("get", this.getCurrentTemperature.bind(this));
 
   // Set up Relative Humidity Service
-  this.humidityService = new Service.HumiditySensor(this.name);
+  this.humidityService = new Service.HumiditySensor("Humidity Sensor");
 
   this.co2monitor.on("hum", humidity => {
     that.log(that.name, "Humidity (%):", humidity);

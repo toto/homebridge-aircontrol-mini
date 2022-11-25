@@ -71,7 +71,7 @@ function CO2Accessory(log, config) {
   this.temperatureService = new Service.TemperatureSensor(this.name);
 
   this.co2monitor.on("temp", temp => {
-    that.log(that.name, "Temperatue (C):", temp);
+    that.log(that.name, "Temperature (C):", temp);
     that.temperature = temp;
     that.temperatureService.setCharacteristic(Characteristic.CurrentTemperature, Number.parseFloat(temp));
   });

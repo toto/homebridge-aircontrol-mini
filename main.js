@@ -1,6 +1,6 @@
 var Service, Characteristic;
 
-const Co2Monitor = require("co2-monitor");
+const Co2Monitor = require("@jaller94/node-co2-monitor");
 let co2Monitor = new Co2Monitor();
 
 module.exports = function(homebridge) {
@@ -31,17 +31,17 @@ function CO2Accessory(log, config) {
   this.co2monitor.on("co2", co2 => {
     that.log(that.name, "CO2 (ppm):", co2);
     if (!that.co2_peak || co2 > that.co2_peak) {
-      that.log(that.name, "CO2 Peak (ppm):", co2);        
+      that.log(that.name, "CO2 Peak (ppm):", co2);
       that.co2_peak = co2;
-      that.co2service.setCharacteristic(Characteristic.CarbonDioxidePeakLevel, co2);          
+      that.co2service.setCharacteristic(Characteristic.CarbonDioxidePeakLevel, co2);
     }
     that.co2 = co2;
-    
+
     var result = that.co2 > that.co2_warning_level
                     ? Characteristic.CarbonDioxideDetected.CO2_LEVELS_ABNORMAL
                     : Characteristic.CarbonDioxideDetected.CO2_LEVELS_NORMAL;
 
-    that.co2service.setCharacteristic(Characteristic.CarbonDioxideLevel, co2);    
+    that.co2service.setCharacteristic(Characteristic.CarbonDioxideLevel, co2);
     that.co2service.setCharacteristic(Characteristic.CarbonDioxideDetected, result);
   });
 

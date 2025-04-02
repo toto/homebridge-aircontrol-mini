@@ -34,6 +34,6 @@
     },
     "homepage": "https://github.com/toto/homebridge-aircontrol-mini#readme",
     "dependencies": {
-        "co2-monitor": "^2.0.0"
+        "@jaller94/node-co2-monitor": "^0.3.4"
     }
 }
